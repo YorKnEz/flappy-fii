@@ -27,17 +27,16 @@
 # Silencing pygame:
 import os
 
+# Exporting envs:
+from flappy_fii.envs.flappy_bird_env import FlappyBirdEnv
 # Registering environments:
 from gymnasium.envs.registration import register
-
-# Exporting envs:
-from flappy_bird_gymnasium.envs.flappy_bird_env import FlappyBirdEnv
 
 os.environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "hide"
 
 register(
-    id="FlappyBird-v0",
-    entry_point="flappy_bird_gymnasium:FlappyBirdEnv",
+    id="FlappyBird-fii-v0",
+    entry_point="flappy_fii:FlappyBirdEnv",
 )
 
 # Main names:

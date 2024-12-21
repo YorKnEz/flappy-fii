@@ -36,26 +36,16 @@ from typing import Dict, Optional, Tuple, Union
 import gymnasium
 import numpy as np
 import pygame
-
-from flappy_bird_gymnasium.envs import utils
-from flappy_bird_gymnasium.envs.constants import (
-    BACKGROUND_WIDTH,
-    BASE_WIDTH,
-    FILL_BACKGROUND_COLOR,
-    LIDAR_MAX_DISTANCE,
-    PIPE_HEIGHT,
-    PIPE_VEL_X,
-    PIPE_WIDTH,
-    PLAYER_ACC_Y,
-    PLAYER_FLAP_ACC,
-    PLAYER_HEIGHT,
-    PLAYER_MAX_VEL_Y,
-    PLAYER_PRIVATE_ZONE,
-    PLAYER_ROT_THR,
-    PLAYER_VEL_ROT,
-    PLAYER_WIDTH,
-)
-from flappy_bird_gymnasium.envs.lidar import LIDAR
+from flappy_fii.envs import utils
+from flappy_fii.envs.constants import (BACKGROUND_WIDTH, BASE_WIDTH,
+                                       FILL_BACKGROUND_COLOR,
+                                       LIDAR_MAX_DISTANCE, PIPE_HEIGHT,
+                                       PIPE_VEL_X, PIPE_WIDTH, PLAYER_ACC_Y,
+                                       PLAYER_FLAP_ACC, PLAYER_HEIGHT,
+                                       PLAYER_MAX_VEL_Y, PLAYER_PRIVATE_ZONE,
+                                       PLAYER_ROT_THR, PLAYER_VEL_ROT,
+                                       PLAYER_WIDTH)
+from flappy_fii.envs.lidar import LIDAR
 
 
 class Actions(IntEnum):
@@ -396,8 +386,6 @@ class FlappyBirdEnv(gymnasium.Env):
         """Renders the next frame."""
         if self.render_mode == "rgb_array":
             self._draw_surface(show_score=False, show_rays=False)
-            # Flip the image to retrieve a correct aspect
-            return np.transpose(pygame.surfarray.array3d(self._surface), axes=(1, 0, 2))
         else:
             self._draw_surface(show_score=True, show_rays=self._use_lidar)
             if self._display is None:
@@ -405,6 +393,9 @@ class FlappyBirdEnv(gymnasium.Env):
 
             self._update_display()
             self._fps_clock.tick(self.metadata["render_fps"])
+
+        # Flip the image to retrieve a correct aspect
+        return np.transpose(pygame.surfarray.array3d(self._surface), axes=(1, 0, 2))
 
     def close(self):
         """Closes the environment."""

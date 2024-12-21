@@ -1,8 +1,8 @@
 # Flappy Bird for Gymnasium
 
-![Python versions](https://img.shields.io/pypi/pyversions/flappy-bird-gymnasium)
-[![PyPI](https://img.shields.io/pypi/v/flappy-bird-gymnasium)](https://pypi.org/project/flappy-bird-gymnasium/)
-[![License](https://img.shields.io/github/license/markub3327/flappy-bird-gymnasium)](https://github.com/markub3327/flappy-bird-gymnasium/blob/master/LICENSE)
+![Python versions](https://img.shields.io/pypi/pyversions/flappy-fii)
+[![PyPI](https://img.shields.io/pypi/v/flappy-fii)](https://pypi.org/project/flappy-fii/)
+[![License](https://img.shields.io/github/license/markub3327/flappy-fii)](https://github.com/markub3327/flappy-fii/blob/master/LICENSE)
 
 This repository contains the implementation of Gymnasium environment for
 the Flappy Bird game. The implementation of the game's logic and graphics was
@@ -49,24 +49,24 @@ There exist two options for the observations:
 
 <p align="center">
   <img align="center" 
-       src="https://github.com/markub3327/flappy-bird-gymnasium/blob/main/imgs/dqn.gif?raw=true" 
+       src="https://github.com/markub3327/flappy-fii/blob/main/imgs/dqn.gif?raw=true" 
        width="200"/>
 </p>
 
 ## Installation
 
-To install `flappy-bird-gymnasium`, simply run the following command:
+To install `flappy-fii`, simply run the following command:
 
-    $ pip install flappy-bird-gymnasium
+    $ pip install flappy-fii
     
 ## Usage
 
-Like with other `gymnasium` environments, it's very easy to use `flappy-bird-gymnasium`.
+Like with other `gymnasium` environments, it's very easy to use `flappy-fii`.
 Simply import the package and create the environment with the `make` function.
 Take a look at the sample code below:
 
 ```python
-import flappy_bird_gymnasium
+import flappy_fii
 import gymnasium
 env = gymnasium.make("FlappyBird-v0", render_mode="human", use_lidar=True)
 
@@ -90,12 +90,12 @@ env.close()
 
 To play the game (human mode), run the following command:
 
-    $ flappy_bird_gymnasium
+    $ flappy_fii
     
 To see a random agent playing, add an argument to the command:
 
-    $ flappy_bird_gymnasium --mode random
+    $ flappy_fii --mode random
 
 To see a Deep Q Network agent playing, add an argument to the command:
 
-    $ flappy_bird_gymnasium --mode dqn
+    $ flappy_fii --mode dqn

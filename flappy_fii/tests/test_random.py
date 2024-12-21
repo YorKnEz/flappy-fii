@@ -26,10 +26,9 @@
 random agent.
 """
 
+import flappy_fii
 import gymnasium
 import numpy as np
-
-import flappy_bird_gymnasium
 
 
 def play(audio_on=True, render_mode="human", use_lidar=False):

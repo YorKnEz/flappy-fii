@@ -1,12 +1,11 @@
+import flappy_fii
 import gymnasium
 import matplotlib.pyplot as plt
 import numpy as np
-
-import flappy_bird_gymnasium
-from flappy_bird_gymnasium.envs.utils import MODEL_PATH
-from flappy_bird_gymnasium.tests.dueling import DuelingDQN
-from flappy_bird_gymnasium.tests.dueling_v2 import DuelingDQN as DuelingDQN_v2
-from flappy_bird_gymnasium.tests.framestack import FrameStack
+from flappy_fii.envs.utils import MODEL_PATH
+from flappy_fii.tests.dueling import DuelingDQN
+from flappy_fii.tests.dueling_v2 import DuelingDQN as DuelingDQN_v2
+from flappy_fii.tests.framestack import FrameStack
 
 plt.ion()
 

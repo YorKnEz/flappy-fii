@@ -22,7 +22,7 @@
 # SOFTWARE.
 # ==============================================================================
 
-""" Setup of the flappy-bird-gymnasium package.
+""" Setup of the flappy-fii package.
 """
 
 from typing import List
@@ -52,22 +52,17 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="flappy-bird-gymnasium",
+    name="flappy-fii",
     version=_VERSION,
-    author="Martin Kubovcik",
-    author_email="markub3327@gmail.com",
+    # author="Martin Kubovcik",
+    # author_email="markub3327@gmail.com",
     description=short_description,
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/markub3327/flappy-bird-gymnasium",
-    project_urls={
-        "Bug Tracker": "https://github.com/markub3327/flappy-bird-gymnasium/issues",
-    },
-    download_url="https://github.com/markub3327/flappy-bird-gymnasium/releases",
     # Contained modules and scripts:
     packages=setuptools.find_packages(),
     package_data={
-        "flappy_bird_gymnasium": [
+        "flappy_fii": [
             "assets/sprites/*",
             "assets/audio/*",
             "assets/model/*",
@@ -107,7 +102,7 @@ setuptools.setup(
     ),
     entry_points={
         "console_scripts": [
-            "flappy_bird_gymnasium = flappy_bird_gymnasium.cli:main",
+            "flappy_fii = flappy_fii.cli:main",
         ],
     },
 )

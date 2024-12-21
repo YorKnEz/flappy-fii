@@ -26,13 +26,12 @@
 human player.
 """
 
+import flappy_fii
 import gymnasium
 import matplotlib.animation as animation
 import matplotlib.pyplot as plt
 import numpy as np
 import pygame
-
-import flappy_bird_gymnasium
 
 
 def play(use_lidar=True):

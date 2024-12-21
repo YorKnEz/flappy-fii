@@ -41,4 +41,4 @@ jobs:
 
       - name: Run pytest
         run: |
-          pytest flappy_bird_gymnasium/tests/
+          pytest flappy_fii/tests/
