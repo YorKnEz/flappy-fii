@@ -696,7 +696,11 @@ class FlappyBirdEnv(gymnasium.Env):
                 "call the `make_display()` method."
             )
 
-        pygame.event.get()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.close()
+                raise InterruptedError()
+            
         self._display.blit(self._surface, [0, 0])
         pygame.display.update()
 
