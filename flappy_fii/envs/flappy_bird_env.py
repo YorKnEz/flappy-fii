@@ -404,7 +404,7 @@ class FlappyBirdEnv(gymnasium.Env):
             self._fps_clock.tick(self._render_fps)
 
         # Flip the image to retrieve a correct aspect
-        return np.transpose(pygame.surfarray.array2d(self._surface))
+        return np.transpose(pygame.surfarray.array3d(self._surface), axes=(1, 0, 2))
 
     def close(self):
         """Closes the environment."""
@@ -709,7 +709,7 @@ class FlappyBirdEnv(gymnasium.Env):
             if event.type == pygame.QUIT:
                 self.close()
                 raise InterruptedError()
-            
+
         self._display.blit(self._surface, [0, 0])
         pygame.display.update()
 
