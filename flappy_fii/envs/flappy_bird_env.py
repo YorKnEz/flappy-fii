@@ -82,7 +82,7 @@ class FlappyBirdEnv(gymnasium.Env):
             be drawn.
     """
 
-    metadata = {"render_modes": ["human", "rgb_array"], "render_fps": 60}
+    metadata = {"render_modes": ["human", "rgb_array"]}
 
     def __init__(
         self,
@@ -97,10 +97,12 @@ class FlappyBirdEnv(gymnasium.Env):
         background: Optional[str] = "day",
         score_limit: Optional[int] = None,
         debug: bool = False,
+        render_fps: int = 30,
     ) -> None:
         assert render_mode is None or render_mode in self.metadata["render_modes"]
         self.render_mode = render_mode
         self._debug = debug
+        self._render_fps = render_fps
         self._score_limit = score_limit
 
         self.action_space = gymnasium.spaces.Discrete(2)
@@ -392,7 +394,7 @@ class FlappyBirdEnv(gymnasium.Env):
                 self._make_display()
 
             self._update_display()
-            self._fps_clock.tick(self.metadata["render_fps"])
+            self._fps_clock.tick(self._render_fps)
 
         # Flip the image to retrieve a correct aspect
         return np.transpose(pygame.surfarray.array2d(self._surface))
