@@ -98,12 +98,19 @@ class FlappyBirdEnv(gymnasium.Env):
         score_limit: Optional[int] = None,
         debug: bool = False,
         render_fps: int = 30,
+        rewards: dict = {
+            "passed_pipe": 1.0,
+            "staying_alive": 0.1,
+            "outside_screen": -0.5,
+            "dying": -1.0,
+        },
     ) -> None:
         assert render_mode is None or render_mode in self.metadata["render_modes"]
         self.render_mode = render_mode
         self._debug = debug
         self._render_fps = render_fps
         self._score_limit = score_limit
+        self._rewards = rewards
 
         self.action_space = gymnasium.spaces.Discrete(2)
         if use_lidar:
@@ -206,7 +213,7 @@ class FlappyBirdEnv(gymnasium.Env):
             pipe_mid_pos = pipe["x"] + PIPE_WIDTH / 2
             if pipe_mid_pos <= player_mid_pos < pipe_mid_pos + 4:
                 self._score += 1
-                reward = 1  # reward for passed pipe
+                reward = self._rewards["passed_pipe"]  # reward for passed pipe
                 self._sound_cache = "point"
 
         # player_index base_x change
@@ -256,7 +263,7 @@ class FlappyBirdEnv(gymnasium.Env):
             if reward_private_zone is not None:
                 reward = reward_private_zone
             else:
-                reward = 0.1  # reward for staying alive
+                reward = self._rewards["staying_alive"]  # reward for staying alive
 
         # check
         if self._debug and self._use_lidar:
@@ -298,12 +305,12 @@ class FlappyBirdEnv(gymnasium.Env):
 
         # agent touch the top of the screen as punishment
         if self._player_y < 0:
-            reward = -0.5
+            reward = self._rewards["outside_screen"]
 
         # check for crash
         if self._check_crash():
             self._sound_cache = "hit"
-            reward = -1  # reward for dying
+            reward = self._rewards["dying"]  # reward for dying
             terminal = True
             self._player_vel_y = 0
             if self._debug and self._use_lidar:
