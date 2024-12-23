@@ -31,4 +31,4 @@ BACKGROUND_HEIGHT = 512
 PLAYER_ROT_THR = 20
 
 #: Color to fill the surface's background when no background image was loaded.
-FILL_BACKGROUND_COLOR = (200, 200, 200)
+FILL_BACKGROUND_COLOR = (0, 0, 0)
