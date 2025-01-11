@@ -97,6 +97,7 @@ class FlappyBirdEnv(gymnasium.Env):
         background: Optional[str] = "day",
         score_limit: Optional[int] = None,
         debug: bool = False,
+        render_fps: int = 30,
         rewards: dict = {
             "passed_pipe": 1.0,
             "staying_alive": 0.1,
@@ -107,6 +108,7 @@ class FlappyBirdEnv(gymnasium.Env):
         assert render_mode is None or render_mode in self.metadata["render_modes"]
         self.render_mode = render_mode
         self._debug = debug
+        self.metadata["render_fps"] = render_fps
         self._score_limit = score_limit
         self._rewards = rewards
 
