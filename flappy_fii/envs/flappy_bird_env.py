@@ -397,6 +397,7 @@ class FlappyBirdEnv(gymnasium.Env):
             self._draw_surface(show_score=False, show_rays=False)
         else:
             self._draw_surface(show_score=True, show_rays=self._use_lidar)
+
             if self._display is None:
                 self._make_display()
 
@@ -576,7 +577,7 @@ class FlappyBirdEnv(gymnasium.Env):
 
         for digit in score_digits:
             self._surface.blit(
-                self._images["numbers"][digit], (x_offset, self._screen_height * 0.1)
+                self._images["numbers"][digit], (x_offset, self._screen_height * 0.9)
             )
             x_offset += self._images["numbers"][digit].get_width()
 
